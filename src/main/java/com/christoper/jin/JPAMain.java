@@ -2,6 +2,7 @@ package com.christoper.jin;
 
 import com.christoper.jin.domain.User;
 import com.christoper.jin.service.BasicService;
+import lombok.extern.slf4j.Slf4j;
 import org.hibernate.jpa.boot.spi.EntityManagerFactoryBuilder;
 
 import javax.persistence.EntityManager;
