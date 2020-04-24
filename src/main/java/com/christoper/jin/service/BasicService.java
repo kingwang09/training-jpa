@@ -6,6 +6,7 @@ import lombok.RequiredArgsConstructor;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.EntityTransaction;
+import java.util.function.Consumer;
 
 /**
  * @Class BasicService
@@ -26,7 +27,7 @@ public class BasicService {
   private final EntityManagerFactory emf;
 
 
-  public void saveUser(){
+  public void saveUser(Consumer<EntityManager> consumer){
     System.out.println("save User start.");
 
     EntityManager em = emf.createEntityManager();
@@ -34,14 +35,8 @@ public class BasicService {
 
     try{
       tx.begin();
-      
-      User u1 = User.builder()
-              .id(1L)
-              .name("Hello JPA World")
-              .build();
-      em.persist(u1);
 
-      System.out.println(u1);
+      consumer.accept(em);
 
       tx.commit();
     }catch(Exception ex){

@@ -1,5 +1,6 @@
 package com.christoper.jin;
 
+import com.christoper.jin.domain.User;
 import com.christoper.jin.service.BasicService;
 import org.hibernate.jpa.boot.spi.EntityManagerFactoryBuilder;
 
@@ -30,7 +31,12 @@ public class JPAMain {
     EntityManagerFactory emf = Persistence.createEntityManagerFactory("christoper");
 
     BasicService basicService = new BasicService(emf);
-    basicService.saveUser();
+    basicService.saveUser((em)->{
+      em.persist(User.builder()
+              .id(100L)
+              .name("hello JPA world(with JAVA8)")
+              .build());
+    });
 
     emf.close();
   }
