@@ -30,17 +30,17 @@ public class BasicService {
   public void saveUser(Consumer<EntityManager> consumer){
     System.out.println("save User start.");
 
+
     EntityManager em = emf.createEntityManager();
     EntityTransaction tx = em.getTransaction();
-
     try{
       tx.begin();
-
       consumer.accept(em);
 
       tx.commit();
     }catch(Exception ex){
       System.out.println("exception : "+ ex.getMessage());
+      ex.printStackTrace();
       tx.rollback();
     }finally {
       em.close();

@@ -9,6 +9,8 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.EntityTransaction;
 import javax.persistence.Persistence;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 /**
  * @Class JPAMain
@@ -34,8 +36,10 @@ public class JPAMain {
     BasicService basicService = new BasicService(emf);
     basicService.saveUser((em)->{
       em.persist(User.builder()
-              .id(100L)
+              //.id(100L)
               .name("hello JPA world(with JAVA8)")
+              .enterDate(LocalDate.of(2017, 10, 23))
+              .created(LocalDateTime.now())
               .build());
     });
 
