@@ -38,7 +38,7 @@ public class JPAMainStep2 {
 
       //join fetch로 User조회시 team도 한번에 가져오도록 처리
       List<User> findUserList2 = em.createQuery("select u from User u join fetch u.team team").getResultList();
-      for(User findUser : findUserList2){//User의 ManyToOne이 Lazy이기 때문에 N+1쿼리가 발생함.
+      for(User findUser : findUserList2){//join fetch로 가져왔기 때문에 N+1쿼리가 발생하지 않음.
         System.out.println("User: "+findUser+", Team: "+findUser.getTeam().getName());//N+1쿼리 예상.
       }
     });
