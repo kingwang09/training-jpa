@@ -26,8 +26,7 @@ import java.util.function.Consumer;
 public class BasicService {
   private final EntityManagerFactory emf;
 
-
-  public void saveUser(Consumer<EntityManager> consumer){
+  public void execute(Consumer<EntityManager> consumer){
     System.out.println("save User start.");
 
 
@@ -45,5 +44,6 @@ public class BasicService {
     }finally {
       em.close();
     }
+    emf.close();
   }
 }

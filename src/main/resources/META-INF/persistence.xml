@@ -6,6 +6,7 @@
 
         <!-- 패키지를 지정할 경우, 직접 Entity Class를 명시해야합니다. -->
         <class>com.christoper.jin.domain.User</class>
+        <class>com.christoper.jin.domain.Team</class>
 
         <properties>
             <!-- 필수 속성 -->
@@ -18,7 +19,7 @@
             <property name="hibernate.show_sql" value="true"/>
             <property name="hibernate.format_sql" value="true"/>
             <property name="hibernate.use_sql_comments" value="true"/>
-            <property name="hibernate.hbm2ddl.auto" value="create" />
+            <!--<property name="hibernate.hbm2ddl.auto" value="create" />-->
         </properties>
 
     </persistence-unit>
