@@ -42,6 +42,23 @@ JPA 기본 트레이닝 프로젝트
 - FK가 있는 쪽에 연관관계의 주인이 된다.
 - 왠만하면 단방향으로 설계, 꼭 필요한 경우에만 양방향 추가
 
+## @OneToMany & @ManyToOne
+- 보통 ManyToOne이 연관관계의 주인이 된다. (FK 소유 테이블이 연관 관계의 주인)
+- OneToMany측에서는 mappedBy를 지정하여 readOnly임을 명시한다.
+- 객체 설계 시에는 왠만하면 단방향으로 진행하는 것을 추천 (개발할 때 꼭 필요한 경우에, 양방향 매핑 추가한다.)
+
+## @OneToOne
+- DB 상으로 어느곳에 FK있어도 되지만 비즈니스 관점으로 주/부테이블을 정하여 FK(연관관계)의 주인을 정하도록 한다.
+- 주테이블에 @JoinColumn을 명시하도록 한다.
+- 마찬가지로 부테이블에는 mappedBy를 지정하여 readOnly임을 명시한다.
+
+## @ManyToMany
+- 실무에서는 비권장하는 매핑
+- 차라리 OneToMany <- ManyToOne <Entity> ManyToOne -> OneToMany
+    - 중간 Entity 객체를 풀어서 사용하는 것을 권장한다.
+- 이유는 보통 중간 매핑 엔티티에 부가 정보를 넣고 싶어하는 것이 현업이기 때문.
+    - 실무에서는 ManyToMany 관계로 단순 매핑만 하지 않는다.
+
 # JPQL
 - 객체지향 쿼리
 - 별칭 필수로 지정
