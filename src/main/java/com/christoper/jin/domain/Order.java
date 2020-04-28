@@ -27,7 +27,7 @@ import java.util.List;
 @Getter
 @NoArgsConstructor
 @Entity
-@Table(name="Order")
+@Table(name="Orders")//테이블이 Order 예약어라서 생성되지 않음.
 public class Order {
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
