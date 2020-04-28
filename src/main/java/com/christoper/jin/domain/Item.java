@@ -1,13 +1,11 @@
 package com.christoper.jin.domain;
 
+import com.christoper.jin.exception.ValidateException;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 /**
  * @Class Item
@@ -26,6 +24,7 @@ import javax.persistence.Id;
 @Getter
 @NoArgsConstructor
 @Entity
+@Table(name="Item")
 public class Item {
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -42,5 +41,27 @@ public class Item {
     this.name = name;
     this.price = price;
     this.stockQuantity = stockQuantity;
+  }
+
+
+  public void buy(int buyCount){
+    if(this.stockQuantity == 0){
+      throw new ValidateException("현재 잔여 수량이 존재하지 않습니다.");
+    }
+
+    if(buyCount > stockQuantity){
+      throw new ValidateException("준비된 수량을 초과하였습니다.");
+    }
+    this.stockQuantity = this.stockQuantity - buyCount;
+  }
+
+  @Override
+  public String toString() {
+    return "Item{" +
+            "id=" + id +
+            ", name='" + name + '\'' +
+            ", price=" + price +
+            ", stockQuantity=" + stockQuantity +
+            '}';
   }
 }

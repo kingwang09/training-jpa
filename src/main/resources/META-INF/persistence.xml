@@ -4,10 +4,14 @@
              xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_2.xsd">
     <persistence-unit name="christoper">
 
-        <!-- 패키지를 지정할 경우, 직접 Entity Class를 명시해야합니다. -->
+        <!-- 패키지를 지정할 경우, 직접 Entity Class를 명시해야합니다.-->
         <class>com.christoper.jin.domain.User</class>
         <class>com.christoper.jin.domain.Team</class>
-
+        <class>com.christoper.jin.domain.Order</class>
+        <class>com.christoper.jin.domain.OrderItem</class>
+        <class>com.christoper.jin.domain.Item</class>
+        <!-- https://stackoverflow.com/questions/1780341/do-i-need-class-elements-in-persistence-xml -->
+        <!-- https://github.com/holyeye/jpabook -->
         <properties>
             <!-- 필수 속성 -->
             <property name="javax.persistence.jdbc.driver" value="org.h2.Driver"/>
@@ -19,7 +23,7 @@
             <property name="hibernate.show_sql" value="true"/>
             <property name="hibernate.format_sql" value="true"/>
             <property name="hibernate.use_sql_comments" value="true"/>
-            <!--<property name="hibernate.hbm2ddl.auto" value="create" />-->
+            <property name="hibernate.hbm2ddl.auto" value="create" />
         </properties>
 
     </persistence-unit>

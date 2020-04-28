@@ -27,6 +27,7 @@ import java.util.List;
 @Getter
 @NoArgsConstructor
 @Entity
+@Table(name="Order")
 public class Order {
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -58,5 +59,14 @@ public class Order {
       this.orderItemList.add(orderItem);
     }
     orderItem.setOrder(this);
+  }
+
+  @Override
+  public String toString() {
+    return "Order{" +
+            "id=" + id +
+            ", orderDateTime=" + orderDateTime +
+            ", orderStatus=" + orderStatus +
+            '}';
   }
 }

@@ -25,6 +25,7 @@ import java.util.List;
 @Getter
 @NoArgsConstructor
 @Entity
+@Table(name="Team")
 public class Team {
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)

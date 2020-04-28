@@ -44,6 +44,5 @@ public class BasicService {
     }finally {
       em.close();
     }
-    emf.close();
   }
 }

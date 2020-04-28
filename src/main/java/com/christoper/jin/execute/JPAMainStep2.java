@@ -3,6 +3,7 @@ package com.christoper.jin.execute;
 import com.christoper.jin.domain.User;
 import com.christoper.jin.service.BasicService;
 
+import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 import java.util.List;
 
@@ -29,7 +30,8 @@ public class JPAMainStep2 {
 
 
   public static void main(String[] args) {
-    BasicService service = new BasicService(Persistence.createEntityManagerFactory("christoper"));
+    EntityManagerFactory emf = Persistence.createEntityManagerFactory("christoper");
+    BasicService service = new BasicService(emf);
     service.execute((em)->{
       List<User> findUserList = em.createQuery("select u from User u").getResultList();//User 조회 쿼리 실행
       for(User findUser : findUserList){//User의 ManyToOne이 Lazy이기 때문에 N+1쿼리가 발생함.
@@ -42,5 +44,6 @@ public class JPAMainStep2 {
         System.out.println("User: "+findUser+", Team: "+findUser.getTeam().getName());//N+1쿼리 예상.
       }
     });
+    emf.close();
   }
 }

@@ -24,6 +24,7 @@ import javax.persistence.*;
 @Getter
 @NoArgsConstructor
 @Entity
+@Table(name="OrderItem")
 public class OrderItem {
 
   @Id
@@ -48,5 +49,14 @@ public class OrderItem {
     this.item = item;
     this.orderPrice = orderPrice;
     this.orderCount = orderCount;
+  }
+
+  @Override
+  public String toString() {
+    return "OrderItem{" +
+            "id=" + id +
+            ", orderPrice=" + orderPrice +
+            ", orderCount=" + orderCount +
+            '}';
   }
 }
