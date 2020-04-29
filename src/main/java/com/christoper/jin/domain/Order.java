@@ -46,6 +46,11 @@ public class Order {
   @OneToMany(mappedBy = "order")
   private List<OrderItem> orderItemList = new ArrayList<OrderItem>();
 
+
+  @OneToOne
+  @JoinColumn(name="DELIVERY_ID")
+  private Delivery delivery;
+
   @Builder
   public Order(User user, LocalDateTime orderDateTime, OrderStatus orderStatus) {
     this.user = user;
@@ -59,6 +64,11 @@ public class Order {
       this.orderItemList.add(orderItem);
     }
     orderItem.setOrder(this);
+  }
+
+  public void setDelivery(Delivery delivery) {
+    this.delivery = delivery;
+    this.delivery.setOrder(this);
   }
 
   @Override

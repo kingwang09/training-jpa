@@ -28,6 +28,7 @@ public class JPAMainStep3 {
     try {
       OrderService service = new OrderService(emf);
       service.init();
+
       User user = User.builder()
               .name("진형은-dummy")
               .build();
