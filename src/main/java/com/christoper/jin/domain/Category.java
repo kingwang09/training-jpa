@@ -32,13 +32,16 @@ public class Category {
 
   private String name;
 
-  @ManyToOne
+  @ManyToOne(fetch = FetchType.LAZY)
   @JoinColumn(name="PARENT_ID")
   private Category parent;
 
   @OneToMany(mappedBy = "parent")
   private List<Category> childList = new ArrayList<Category>();
 
+
+  @OneToMany(mappedBy = "category")
+  private List<CategoryItem> mappingItemList = new ArrayList<>();
 
   public void setParent(Category parentCategory){
     this.parent = parentCategory;

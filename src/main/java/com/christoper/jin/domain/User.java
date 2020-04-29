@@ -1,9 +1,9 @@
 package com.christoper.jin.domain;
 
+import com.christoper.jin.constant.RoleType;
 import com.christoper.jin.exception.NotExistException;
 import lombok.*;
 
-import javax.management.relation.Role;
 import javax.persistence.*;
 import java.time.LocalDate;
 import java.time.LocalDateTime;

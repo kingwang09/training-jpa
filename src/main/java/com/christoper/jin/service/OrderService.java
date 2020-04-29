@@ -95,6 +95,7 @@ public class OrderService {
               .user(user)
               .orderDateTime(LocalDateTime.now())
               .build();
+
       for(OrderItemDto itemDto : orderItemList){
         Item buyItem = em.find(Item.class, itemDto.getItemId());
         System.out.println("2. find Item : "+buyItem);

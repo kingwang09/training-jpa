@@ -10,6 +10,9 @@
         <class>com.christoper.jin.domain.Order</class>
         <class>com.christoper.jin.domain.OrderItem</class>
         <class>com.christoper.jin.domain.Item</class>
+        <class>com.christoper.jin.domain.Category</class>
+        <class>com.christoper.jin.domain.CategoryItem</class>
+        <class>com.christoper.jin.domain.Delivery</class>
         <!-- https://stackoverflow.com/questions/1780341/do-i-need-class-elements-in-persistence-xml -->
         <!-- https://github.com/holyeye/jpabook -->
         <properties>
@@ -24,6 +27,7 @@
             <property name="hibernate.format_sql" value="true"/>
             <property name="hibernate.use_sql_comments" value="true"/>
             <property name="hibernate.hbm2ddl.auto" value="create" />
+            
         </properties>
 
     </persistence-unit>

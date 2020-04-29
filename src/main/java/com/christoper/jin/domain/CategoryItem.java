@@ -1,5 +1,6 @@
 package com.christoper.jin.domain;
 
+import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -28,13 +29,23 @@ public class CategoryItem {
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private Long id;
 
-  @Setter
   @ManyToOne
   @JoinColumn(name="CATEGORY_ID")
   private Category category;
 
-  @Setter
   @ManyToOne
   @JoinColumn(name="ITEM_ID")
   private Item item;
+
+  @Builder
+  public CategoryItem(Category category, Item item) {
+    this.category = category;
+
+    if(!this.category.getMappingItemList().contains(this)) {
+      this.category.getMappingItemList().add(this);
+    }
+
+    this.item = item;
+  }
 }
+
