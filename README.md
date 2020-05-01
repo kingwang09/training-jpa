@@ -114,3 +114,16 @@ JPA 기본 트레이닝 프로젝트
 - 공통 항목을 정의할 수 있음.
     - ex) 작성일자, 수정일자 등.
 - abstract Class로 지정하는 것을 추천함. (실수하지 않도록)
+
+# Proxy & FetchType
+- 기본적으로 LAZY로 설정하도록 한다. 
+  - 성능상 한번에 조회가 필요한 경우에는 JPQL을 이용해 join fetch 전략을 사용한다.
+
+# CASCADE (영속성 전이)
+- 상위 객체에서 독립적으로 참조하고 있는 경우에만 사용하도록 한다.
+  - 연관된 객체의 영속성 관리(라이프 사이클)를 상위 객체에서 하겠다는 의미이므로.
+- CASCADE.ALL, PERSIST, REMOVE를 보통 사용한다.
+  - CASCADE.ALL로 지정할 경우, orphanRemoval=true를 지정한다.
+- orphanRemoval=true
+  - 상위 객체의 연결관계가 끊어지면 하위 엔티티도 삭제하겠다는 의미임.
+  
