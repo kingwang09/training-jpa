@@ -53,6 +53,7 @@
 - 실무에서는 비권장하는 매핑
 - 차라리 OneToMany <- ManyToOne <Entity> ManyToOne -> OneToMany
     - 중간 Entity 객체를 풀어서 사용하는 것을 권장한다.
+    
 - 이유는 보통 중간 매핑 엔티티에 부가 정보를 넣고 싶어하는 것이 현업이기 때문.
     - 실무에서는 ManyToMany 관계로 단순 매핑만 하지 않는다.
 
