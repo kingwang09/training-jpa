@@ -124,5 +124,3 @@
   - CASCADE.ALL로 지정할 경우, orphanRemoval=true를 지정한다.
 - orphanRemoval=true
   - 상위 객체의 연결관계가 끊어지면 하위 엔티티도 삭제하겠다는 의미임.
-  
-  
