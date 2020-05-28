@@ -124,3 +124,36 @@
   - CASCADE.ALL로 지정할 경우, orphanRemoval=true를 지정한다.
 - orphanRemoval=true
   - 상위 객체의 연결관계가 끊어지면 하위 엔티티도 삭제하겠다는 의미임.
+
+# 경로 표현식
+- JPQL을 .으로 쿼리를 사용할 때
+- 상태 필드
+  - 엔티티 안에 있는 단일 필드
+- 연관 필드
+  - 단일 값 연관 필드: 연관 관계가 1:1, N:1인 경우, 추가 탐색 가능
+  - 컬렉션 값 연관필드: 연관 관계가 1:N, M:N인 경우, 추가 탐색 불가능 (여러개의 값이므로)
+    - 컬렉션값 연관필드는 탐색 X
+- 연관 필드를 경로표현식으로 접근 시 묵시적 조인이 발생함. (주의)
+- 명시적 조인을 하여 별칭을 사용하는 것을 권장
+
+# fetch Join
+- JPQL에서 성능 최적화를 위해 제공하는 기능
+- SQL에서 한번에 함께 조회하는 기능
+- ( LEFT | INNER ) join fetch
+- Collection fetch join
+  - 연관관계가 1:N인 경우, 1:N조인이라 데이터 중복 발생함. (SQL관점으로 생각해보면 당연한 결과임)
+  - 따라서, 중복 제거를 위해 distinct를 사용함.
+  
+# distinct
+- SQL에서 distinct를 추가함.
+  - SQL입장에서 데이터가 모두 똑같아야 제거된다.
+- 어플리케이션에서 엔티티 중복 제거
+  - 어플리케이션에서 같은 식별자를 가진 엔티티를 제거함.
+
+# fetch join의 한계
+- fetch join에서는 별칭 줄 수 없음.
+- 2개 이상의 컬렉션은 fetch join할 수 없다.
+- 컬렉션을 fetch join하면 페이징 API(maxResult, firstResult) 사용 못함.
+  - 가능은한데 메모리로 페이징을 하기 때문에 사용을 지양함.
+
+@BatchSize 또는 hibernate.default_batch_fetch_size로 지정하여 fetch해서 가져올 데이터를 bulk로 가져옴.
